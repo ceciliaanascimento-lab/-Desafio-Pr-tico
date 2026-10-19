@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Equipamentos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Gestão de Equipamentos de TI</h1>
+            <p>Controle de inventário e disponibilidade</p>
+        </header>
+
+        <!-- Formulário de Cadastro e Edição -->
+        <section class="card">
+            <h2 id="form-title">Cadastrar Novo Equipamento</h2>
+            <form id="equipment-form">
+                <input type="hidden" id="equip-id">
+                
+                <div class="form-group">
+                    <label for="name">Nome do Equipamento:</label>
+                    <input type="text" id="name" placeholder="Ex: Notebook Dell Latitude" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Categoria:</label>
+                    <select id="category" required>
+                        <option value="">Selecione...</option>
+                        <option value="Notebook">Notebook</option>
+                        <option value="Monitor">Monitor</option>
+                        <option value="Periférico">Periférico</option>
+                        <option value="Servidor">Servidor</option>
+                        <option value="Outro">Outro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="serial">Número de Série:</label>
+                    <input type="text" id="serial" placeholder="Ex: SN-987654" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Situação:</label>
+                    <select id="status" required>
+                        <option value="Disponível">Disponível</option>
+                        <option value="Emprestado">Emprestado</option>
+                        <option value="Manutenção">Manutenção</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" id="btn-save" class="btn btn-primary">Salvar Equipamento</button>
+                    <button type="button" id="btn-cancel" class="btn btn-secondary hidden">Cancelar</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Filtros e Pesquisa -->
+        <section class="card">
+            <h2>Consulta de Equipamentos</h2>
+            <div class="filter-container">
+                <input type="text" id="search-input" placeholder="Pesquisar por nome ou série...">
+                <select id="filter-status">
+                    <option value="Todos">Todos os Status</option>
+                    <option value="Disponível">Apenas Disponíveis</option>
+                    <option value="Emprestado">Apenas Emprestados</option>
+                    <option value="Manutenção">Apenas Manutenção</option>
+                </select>
+            </div>
+
+            <!-- Tabela de Listagem -->
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nome</th>
+                            <th>Categoria</th>
+                            <th>Nº de Série</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="equipment-list">
+                        <!-- Itens renderizados via JS -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
